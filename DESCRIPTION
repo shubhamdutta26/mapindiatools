@@ -4,12 +4,11 @@ Title: Mapping Data for 'mapindia' Package
 Version: 1.0.0
 Authors@R: 
     person("Shubham", "Dutta", , "shubhamdutta26@gmail.com", 
-    role = c("aut", "cre", "cph"),
-    comment = c(ORCID = "0000-0001-8484-0717"))
+    role = c("aut", "cre", "cph"), comment = c(ORCID = "0000-0001-8484-0717"))
 Maintainer: Shubham Dutta <shubhamdutta26@gmail.com>
-Description: Provides a container for data used by the 'mapindia' package.
-    The data used by 'mapindia' has been extracted into this package so that the
-    file size of the 'mapindia' package can be reduced considerably. The data in 
+Description: Provides a container for data used by the 'mapindia' package. 
+    The data used by 'mapindia' has been extracted into this package so that the 
+    file size of the 'mapindia' package can be reduced considerably. The data in
     this package will be updated when latest data is available.
 License: MIT + file LICENSE
 Encoding: UTF-8
@@ -17,13 +16,15 @@ LazyData: true
 RoxygenNote: 7.3.2
 Imports: 
     dplyr,
-    readxl,
+    readr,
     rlang,
     sf,
     stringr,
     tidyr
 Suggests: 
     testthat (>= 3.0.0)
+Depends:
+    R (>= 2.10)
 Config/testthat/edition: 3
 URL: https://github.com/shubhamdutta26/mapindiatools
 BugReports: https://github.com/shubhamdutta26/mapindiatools/issues

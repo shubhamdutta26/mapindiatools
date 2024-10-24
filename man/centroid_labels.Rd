@@ -13,7 +13,7 @@ The default is \code{"states"}.}
 }
 \value{
 An `sf` data frame of state or district centroid labels and positions
-  relative to the coordinates returned by the \code{india_map} function.
+  relative to the coordinates returned by the \code{map_india} function.
 }
 \description{
 Retrieve centroid labels

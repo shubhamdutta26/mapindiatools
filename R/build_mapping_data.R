@@ -10,6 +10,7 @@
 #' `compute_centroids()` computes the modified centroids for each state or
 #' district polygon using a center-of-mass technique on the largest polygon in
 #' the region.
+#'
 #' @importFrom tidyr unite
 #' @note
 #' Using these functions externally is not recommended since they make certain
@@ -70,10 +71,10 @@ build_mapping_data <- function(
 
   # join with abbr
   if (type == "states") {
-    state_abbr <- readxl::read_excel("data-raw/state_abbr.xlsx")
+    state_abbr <- readr::read_csv("data-raw/state_abbr.csv")
     india_ea <- dplyr::full_join(india_ea, state_abbr, by = "code11")
   } else if (type == "districts") {
-    state_abbr_for_dt <- readxl::read_excel("data-raw/state_abbr_for_district.xlsx")
+    state_abbr_for_dt <- readr::read_csv("data-raw/state_abbr_for_district.csv")
     india_ea <- dplyr::full_join(india_ea, state_abbr_for_dt, by = "code11")
     # No NAs should be in columns code11 and dtcode11
     india_ea <- tidyr::unite(india_ea, code11, dtcode11, col = "code11", sep = "")

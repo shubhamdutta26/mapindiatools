@@ -32,43 +32,29 @@ map_india <- function(
 ) {
   regions <- rlang::arg_match(regions)
 
-  if (regions == "state") regions <- "states"
-  else if (regions == "district") regions <- "districts"
-
-  df <- sf::read_sf(
-    system.file("extdata", paste0("india_", regions, ".gpkg"),
-                package = "mapindiatools")
-  )
-
-  if (regions == "states") {
-    if (length(include) > 0) {
-      df <- df[df$stname %in% include |
-                 df$abbr %in% include |
-                 df$code11 %in% include, ]
-    }
-
-    if (length(exclude) > 0) {
-      df <- df[!(df$stname %in% exclude |
-                   df$abbr %in% exclude |
-                   df$code11 %in% exclude), ]
-    }
-  } else if (regions == "districts") {
-    if (length(include) > 0) {
-      df <- df[df$stname %in% include |
-                 df$abbr %in% include |
-                 df$code11 %in% include, ]
-    }
-
-    if (length(exclude) > 0) {
-      df <- df[!(df$stname %in% exclude |
-                   df$abbr %in% exclude |
-                   df$code11 %in% exclude), ]
-    }
+  if (regions %in% c("state", "states")) {
+    df <- india_states
+  } else if (regions %in% c("district", "districts")) {
+    df <- india_districts
+  } else {
+    stop("Invalid region specified.")
   }
 
+  if (length(include) > 0) {
+    df <- df[df$stname %in% include |
+               df$abbr %in% include |
+               df$code11 %in% include, ]
+  }
+
+  if (length(exclude) > 0) {
+    df <- df[!(df$stname %in% exclude |
+                 df$abbr %in% exclude |
+                 df$code11 %in% exclude), ]
+  }
 
   df[order(df$abbr), ]
 }
+
 
 #' Retrieve centroid labels
 #'
@@ -77,7 +63,7 @@ map_india <- function(
 #'   The default is \code{"states"}.
 #'
 #' @return An `sf` data frame of state or district centroid labels and positions
-#'   relative to the coordinates returned by the \code{india_map} function.
+#'   relative to the coordinates returned by the \code{map_india} function.
 #'
 #' @export
 centroid_labels <- function(
@@ -86,8 +72,9 @@ centroid_labels <- function(
 
   regions <- rlang::arg_match(regions)
 
-  sf::read_sf(
-    system.file("extdata", paste0("india_", regions, "_centroids.gpkg"),
-                package = "mapindiatools")
-  )
+  if (regions == "states") {
+    india_states_centroids
+  } else if (regions == "districts") {
+    india_districts_centroids
+  }
 }
