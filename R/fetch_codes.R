@@ -13,7 +13,7 @@
 #'
 #' state_codes <- fetch_codes()
 #'
-#' county_codes <- fetch_codes(regions = "districts")
+#' district_codes <- fetch_codes(regions = "districts")
 fetch_codes <- function(
     regions = c("states", "state", "districts", "district")
 ) {

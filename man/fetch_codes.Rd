@@ -22,5 +22,5 @@ str(fetch_codes())
 
 state_codes <- fetch_codes()
 
-county_codes <- fetch_codes(regions = "districts")
+district_codes <- fetch_codes(regions = "districts")
 }
