@@ -18,8 +18,6 @@ An data frame of codes of the desired \code{regions}.
 Retrieve state and district codes
 }
 \examples{
-str(fetch_codes())
-
 state_codes <- fetch_codes()
 
 district_codes <- fetch_codes(regions = "districts")
