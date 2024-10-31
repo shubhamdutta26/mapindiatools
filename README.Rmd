@@ -1,5 +1,8 @@
 ---
 output: github_document
+editor_options: 
+  markdown: 
+    wrap: 72
 ---
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
@@ -16,33 +19,44 @@ knitr::opts_chunk$set(
 # mapindiatools
 
 <!-- badges: start -->
+
 [![R-CMD-check](https://github.com/shubhamdutta26/mapindiatools/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/shubhamdutta26/mapindiatools/actions/workflows/R-CMD-check.yaml)
-[![Codecov test coverage](https://codecov.io/gh/shubhamdutta26/mapindiatools/graph/badge.svg)](https://app.codecov.io/gh/shubhamdutta26/mapindiatools)
+[![Codecov test
+coverage](https://codecov.io/gh/shubhamdutta26/mapindiatools/graph/badge.svg)](https://app.codecov.io/gh/shubhamdutta26/mapindiatools)
+
 <!-- badges: end -->
 
-The goal of `mapindiatools` is to serve as a container package for the maps
-data used in `mapindia` package. This data has been separated to keep the
-size of the `mapindia` package manageable and facilitate easier
+The goal of `mapindiatools` is to serve as a container package for the
+maps data used in `mapindia` package. This data has been separated to
+keep the size of the `mapindia` package manageable and facilitate easier
 maintenance, while enabling more frequent updates to the Indian map data
 frame without relying on `mapindia` package updates.
 
 ## Map data
 
-The geojson files are stored in the data-raw/geojson_files folder. These
-files were read and appropriately modified using the
-`build_mapping_data()` function and saved as gpkg files in the
-inst/extdata folder. The centroids were also calculated using the
-`compute_centroids()` function.
+The geojson files are stored in the . The data was read using the `sf`
+package, appropriately modified using the `build_mapping_data()`
+function, and saved as .gpkg files in
+[mapindiatoolsdata](https://github.com/shubhamdutta26/mapindiatoolsdata)
+repository. The centroids were also calculated using the
+`compute_centroids()` function. These files were then stored as internal
+data in R/ folder.
 
 **Note:** The 3-digit code11 codes for districts were merged with the
 2-digit state codes to create a 5-digit code for the districts.
 
 ## Installation
 
+To install mapindiatools from CRAN:
+
+```{r cran}
+install.packages("mapindiatools")
+```
+
 You can install the development version of mapindiatools from
 [GitHub](https://github.com/) with:
 
-``` r
+```{r github}
 # install.packages("pak")
 pak::pak("shubhamdutta26/mapindiatools")
 ```
@@ -59,5 +73,6 @@ library(mapindiatools)
 ## Acknowledgments
 
 I would like to thank [pdil](https://github.com/pdil) since I have used
-his `usmap` package to write most of this package. I would also like to
-thank [datta07](https://github.com/datta07) for the geojson files.
+his `usmap` package to write most of the functions in this package. I
+would also like to thank [datta07](https://github.com/datta07) for the
+geojson files of the Indian subcontinent.
