@@ -49,14 +49,18 @@ data in R/ folder.
 
 To install mapindiatools from CRAN:
 
-```{r cran}
+```{r}
+#| label: cran
+#| eval: false
 install.packages("mapindiatools")
 ```
 
 You can install the development version of mapindiatools from
 [GitHub](https://github.com/) with:
 
-```{r github}
+```{r}
+#| label: github
+#| eval: false
 # install.packages("pak")
 pak::pak("shubhamdutta26/mapindiatools")
 ```
@@ -66,7 +70,9 @@ pak::pak("shubhamdutta26/mapindiatools")
 To begin using `mapindiatools`, import the package using the `library`
 command:
 
-```{r usage}
+```{r}
+#| label: usage
+#| eval: false
 library(mapindiatools)
 ```
 
